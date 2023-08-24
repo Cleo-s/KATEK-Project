@@ -4,8 +4,12 @@ export default defineConfig({
 	root: './',
 	base: '/',
 	server: {
-		port: '3001',
-		open: './'
+		watch: {
+			usePolling: true,
+		},
+		host: true,
+		strictPort: true,
+		port: 3001
 	},
 	build: {
 		rollupOptions: {
