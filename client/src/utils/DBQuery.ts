@@ -1,5 +1,5 @@
 import CustomStorage, { ICustomStorage } from '../services/Storage/CustomStorage.js';
-import fetchData from './fetchDbJSON.js';
+import fetchData from './FetchDbJSON.ts';
 import { FullDataInterface } from './types.js';
 
 const dateOptionSelector: HTMLSelectElement | null = document.querySelector('#date-params');

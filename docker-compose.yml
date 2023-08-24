@@ -4,9 +4,9 @@ services:
     build:
       context: ./server
     ports:
-      - 3000:3000
+      - "3000:3000"
   client:
     build:
       context: ./client
     ports:
-      - 3001:3001
+      - "3001:3001"
