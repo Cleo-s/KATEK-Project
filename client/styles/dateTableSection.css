@@ -1,0 +1,60 @@
+.date-table-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    gap: 60px;
+}
+
+.date-table-section .date-table-left-arrow,
+.date-table-section .date-table-right-arrow {
+    position: absolute;
+
+    background-color: transparent;
+    border: none;
+
+    color: #00b7ff;
+
+    transition: 0.2s ease;
+
+    cursor: pointer;
+}
+
+.date-table-section .date-table-left-arrow {
+    left: 20px;
+    background-color: #333236;
+    border-radius: 7.5px;
+    border: 1px solid #00b7ff;
+}
+
+.date-table-section .date-table-right-arrow {
+    right: 7px;
+    background-color: #333236;
+    border-radius: 7.5px;
+    border: 1px solid #00b7ff;
+}
+
+.date-table-section .date-table-left-arrow i,
+.date-table-section .date-table-right-arrow i {
+    font-size: 100px;
+}
+
+.date-table-section .date-table-left-arrow i:hover,
+.date-table-section .date-table-right-arrow i:hover {
+    color: #acacac;
+}
+
+.fixed-dt-arrow-left,
+.fixed-dt-arrow-right {
+    position: fixed !important;
+    top: 450px !important;
+
+}
+
+.table-carousel-section {
+    display: flex;
+    justify-content: center;
+
+    gap: 20px;
+}
