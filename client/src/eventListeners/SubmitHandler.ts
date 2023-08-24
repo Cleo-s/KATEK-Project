@@ -5,7 +5,7 @@ import getFilters from '../utils/Data-filtering';
 import DropdownValues from '../utils/Dropdown-values';
 import CreateDiagram from '../components/Diagram/Diagram';
 import CustomStorage, { ICustomStorage } from '../services/Storage/CustomStorage';
-import DBQuery from '../utils/dBQuery';
+import DBQuery from '../utils/DBQuery.ts';
 import renderDataTable from '../utils/renderComponents/renderDataTable';
 
 import printFullTable from '../components/FullTable/FullTable';
