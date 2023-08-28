@@ -5,11 +5,12 @@ import cors from "cors";
 import net from "net";
 
 const app = express();
+
 app.use(express.static("public"));
 app.use(cors());
 
 const config: SQLConfig = {
-  server: "KATSRV19",
+  server: "10.180.10.65",
   database: "KATEK_System",
   password: "#T34mBlu3Kdegr4?",
   user: "SYS_EXPORT_WEBQUERY",
@@ -20,7 +21,7 @@ const config: SQLConfig = {
 };
 
 const sqlQuery = 'SELECT TOP 500 * FROM dbo.ProcessLOG';
-const port = 3000;
+const port = 8000;
 
 let connection: ConnectionPool | undefined;
 

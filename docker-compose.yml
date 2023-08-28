@@ -5,8 +5,16 @@ services:
       context: ./server
     ports:
       - "3000:3000"
+    networks:
+      - custom-network
   client:
     build:
       context: ./client
     ports:
       - "3001:3001"
+    networks:
+      - custom-network
+
+networks:
+  custom-network:
+    driver: bridge
