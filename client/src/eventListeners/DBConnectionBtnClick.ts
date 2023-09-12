@@ -8,9 +8,10 @@ const submitSection = document.querySelector('#submit-section') as HTMLDivElemen
 const Storage: ICustomStorage = new CustomStorage();
 
 export default async function HandleDBConnectionBtnClick() {
+
 	if (!Storage.items.data) {
 		try {
-			Storage.setItem('data', await fetchData('http://localhost:3000/load-fetch') as object[]);
+			Storage.setItem('data', await fetchData('http://10.180.0.207:3000/load-fetch') as object[]);
 
 			if (Storage.items.data) {
 				const dbConnectionDiv: HTMLDivElement | null = document.querySelector('#db-connect-div');

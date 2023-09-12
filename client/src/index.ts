@@ -3,6 +3,7 @@
 /* Functions import from other files */
 import CustomStorage from './services/Storage/CustomStorage';
 import PopUpHeadersSelect from './components/PopupHeadersSelect/PopUpHeadersSelect';
+import LoginWindow from './components/login-form/Login-window';
 
 // EVENT LISTENERS FROM EXTERNAL FILES-------------------------------------------------------------
 import SaveDataInCsv from './eventListeners/CsvSave';
@@ -105,12 +106,12 @@ const rightDatePicker = document.querySelector('#right-inner-date-picker') as HT
 //-------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------
 
-//LoginWindow();
+LoginWindow();
 
 if (tableCheckbox)
 	tableCheckbox.checked = true;
 
-document.querySelector('#over-tables')?.setAttribute('style', 'display: none;');
+document.querySelector('#lover-tables')?.setAttribute('style', 'display: none;');
 
 Storage.setItem('dataSourceOption',
 	dataSource?.options[dataSource?.selectedIndex]?.value

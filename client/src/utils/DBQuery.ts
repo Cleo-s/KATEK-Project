@@ -57,9 +57,9 @@ export default async function DBQuery() {
 	console.log(args);
 
 	if (args !== '')
-		Storage.setItem('data', await fetchData(`http://localhost:3000/db-fetch?${args}`) as FullDataInterface[]);
+		Storage.setItem('data', await fetchData(`http://10.180.0.207:3000/db-fetch?${args}`) as FullDataInterface[]);
 	else
-		Storage.setItem('data', await fetchData('http://localhost:3000/db-fetch') as FullDataInterface[]);
+		Storage.setItem('data', await fetchData('http://10.180.0.207:3000/db-fetch') as FullDataInterface[]);
 
 	queryObjects = null;
 }

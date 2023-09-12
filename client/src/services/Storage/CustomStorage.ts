@@ -50,7 +50,8 @@ interface ICore {
 	dateTableIndex?: number,
 	leftInnerDate?: string,
 	rightInnerDate?: string,
-	countPFCoeff?: number
+	countPFCoeff?: number,
+	res?: JSON;
 }
 
 type CoreFields =
@@ -94,6 +95,7 @@ type CoreFields =
 	| 'leftInnerDate'
 	| 'rightInnerDate'
 	| 'countPFCoeff'
+	| 'response'
 
 class CustomStorage implements ICustomStorage {
 	private static _core: Record<string, any> = {};
@@ -104,7 +106,9 @@ class CustomStorage implements ICustomStorage {
 			CustomStorage._core = {};
 
 		this._core = CustomStorage._core;
-		(window as any).CustomStorage = this;
+		if (typeof window !== 'undefined') {
+			(window as any).CustomStorage = this;
+		  }
 	}
 
 	get items(): ICore {

@@ -19,7 +19,7 @@ interface userData{
 }
 
 const userData = {
-    login: 'adminSM',
+    login: 'admin',
     password: '1',
 };
 

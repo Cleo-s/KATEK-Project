@@ -4,9 +4,9 @@ WORKDIR /server
 COPY ./ /server
 
 RUN npm config set strict-ssl false
-RUN npm install -g ts-node
+RUN npm install -D ts-node
 RUN npm install
 
-EXPOSE 1433
+EXPOSE 3000
 
 CMD npm run start
