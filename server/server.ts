@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import sql, { ConnectionPool, config as SQLConfig, IResult } from "mssql";
+import bodyParser from "body-parser";
 import fkill from "fkill";
 import cors from "cors";
 import net from "net";
@@ -149,6 +150,86 @@ app.get("/db-fetch", async (req: Request, res: Response) => {
   } catch (error) {
     console.error("Failed to execute SQL query:", error);
     res.status(500).send("Error fetching data from the database");
+  }
+});
+
+import ActiveDirectory from "activedirectory2";
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+const ad = new ActiveDirectory({
+  url: 'ldap://srv01-dc10.katek.int:389',
+  baseDN: 'CN=Gruppe-PT,OU=KATEKGruppen,DC=katek,DC=int',
+  username: '',
+  password: ''
+});
+
+app.post('/login', async(req, res) => {
+
+  try {
+
+    console.log(req.body);
+
+    /*const {username, password} = req.body;
+    console.log(req.body);
+    console.log(username, password);
+
+    // Check if username and password are provided
+    if (!username || !password) {
+
+      res.status(400).send('Username and password are required');
+
+      return;
+    }
+
+    // Attempt authentication
+    ad.authenticate(username, password, (err, auth) => {
+
+      if (err) {
+
+        console.error('Error during authentication:', err);
+        res.status(500).send('Internal Server Error');
+        return;
+
+      }
+
+      if (auth) {
+
+        // Assuming 'GroupA' is a valid group in your Active Directory
+        ad.isUserMemberOf(username, 'Gruppe-PT', (err, isMember) => {
+
+          if (err) {
+
+            console.error('Error during group membership check:', err);
+            res.status(500).send('Internal Server Error');
+
+            return;
+          }
+
+          if (isMember) {
+
+            res.status(200).send('Successful login');
+          } 
+          
+          else {
+
+            res.status(403).send('Access Denied');
+          }
+        });
+      } 
+      
+      else {
+
+        res.status(401).send('Unauthorized');
+      }
+    });*/
+  } 
+  
+  catch (error) {
+
+    console.error('Error during login:', error);
+    res.status(500).send('Internal Server Error');
   }
 });
 
