@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import sql, { ConnectionPool, config as SQLConfig, IResult } from "mssql";
-import bodyParser from "body-parser";
+//import bodyParser from "body-parser";
 import fkill from "fkill";
 import cors from "cors";
 import net from "net";
@@ -160,26 +160,17 @@ app.use(express.urlencoded({ extended: true }));
 
 const ad = new ActiveDirectory({
   url: 'ldap://srv01-dc10.katek.int:389',
-  baseDN: 'CN=Gruppe-PT,OU=KATEKGruppen,DC=katek,DC=int',
-  username: '',
-  password: ''
+  baseDN: 'OU=User,OU=KATEKazure,DC=katek,DC=int',
+  username: '', // <-- Fill this in
+  password: ''  // <-- Fill this in
 });
 
 app.post('/login', async(req, res) => {
-
   try {
+    const { username, password } = req.body;
 
-    console.log(req.body);
-
-    /*const {username, password} = req.body;
-    console.log(req.body);
-    console.log(username, password);
-
-    // Check if username and password are provided
     if (!username || !password) {
-
       res.status(400).send('Username and password are required');
-
       return;
     }
 
@@ -191,39 +182,17 @@ app.post('/login', async(req, res) => {
         console.error('Error during authentication:', err);
         res.status(500).send('Internal Server Error');
         return;
-
       }
 
       if (auth) {
-
-        // Assuming 'GroupA' is a valid group in your Active Directory
-        ad.isUserMemberOf(username, 'Gruppe-PT', (err, isMember) => {
-
-          if (err) {
-
-            console.error('Error during group membership check:', err);
-            res.status(500).send('Internal Server Error');
-
-            return;
-          }
-
-          if (isMember) {
-
-            res.status(200).send('Successful login');
-          } 
-          
-          else {
-
-            res.status(403).send('Access Denied');
-          }
-        });
+        res.status(200).send('Successful login');
       } 
       
       else {
-
         res.status(401).send('Unauthorized');
       }
-    });*/
+    });
+
   } 
   
   catch (error) {
@@ -232,5 +201,3 @@ app.post('/login', async(req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
-
-

@@ -1,4 +1,3 @@
-'use strict'
 
 import CustomStorage, {ICustomStorage} from "../../services/Storage/CustomStorage";
 
@@ -13,9 +12,6 @@ const loginWrapper = document.querySelector('#login-wrapper') as HTMLElement;
 const passwordWrapper = document.querySelector('#password-wrapper') as HTMLElement;
 const savePasswordCheckbox = document.querySelector('#save-password-checkbox-input') as HTMLInputElement;
 
-const passwordName: string = passwordField.value;
-const trimmedLoginValue: string = logInfield.value.trim();
-
 export default function LoginWindow() {
     loginOverlay.style.display = 'flex';
 
@@ -25,6 +21,9 @@ export default function LoginWindow() {
         Storage.setItem('password', passwordField.value);
         
         async function ActiveDirectoryFetch() {
+
+            const passwordName: string = passwordField.value;
+            const trimmedLoginValue: string = logInfield.value.trim();
             
             const response = await fetch('http://10.180.0.207:3000/login', {
                 method: 'POST',
@@ -37,6 +36,7 @@ export default function LoginWindow() {
                 })
             })
 
+            console.log(passwordName, trimmedLoginValue);
             console.log(response.status)
 
             if (response.status === 200) {
